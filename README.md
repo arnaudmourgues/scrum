@@ -1,2 +1,3 @@
 # scrum
-I'm the scrum master
+scrum master : Arnaud
+scrum slaves : other
