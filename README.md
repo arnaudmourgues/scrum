@@ -1,3 +1,3 @@
 # scrum
-scrum master : Arnaud
-scrum slaves : other
+cum master : Arnaud
+cum slaves : other
