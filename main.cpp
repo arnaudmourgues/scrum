@@ -1,6 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <bits/stdc++.h>
+#include <string>
 #include <iostream>
 #include <fstream>
-#include <sstream>
 
 using namespace std;
 
@@ -15,7 +19,7 @@ string replace_space_by_underscore(string str) {
 
 string pdf_to_variable(const string &pdf_file) {
     string variable_name = replace_space_by_underscore(pdf_file);
-    string command = "pdftotext -colspacing 0.7 " + pdf_file + " " + variable_name + ".txt";
+    string command = "pdftotext " + pdf_file + " " + variable_name + ".txt";
     system(command.c_str());
     ifstream file(variable_name + ".txt");
     string content((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
@@ -66,7 +70,33 @@ void read_line_by_line(const string &str, string &title, string &abstract) {
     }
 }
 
+
+void create_xml_file(char *filename, string line, string title, string abstract, string output)
+{
+
+    ofstream fp;
+    fp.open (output);
+    fp << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
+    //delete "CORPUS_TRAIN/" from the name of the file
+    string name = line;
+    name.erase(0, 12);
+    name.erase(name.size() - 4, name.size());
+
+    fprintf(fp, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+    fprintf(fp, "<root>\n");
+        fprintf(fp, "\t<article>\n");
+        fprintf(fp, "\t\t<preamble>%s</preamble>\n", name.c_str());
+        fprintf(fp, "\t\t<titre>%s</titre>\n", title.c_str());
+        fprintf(fp, "\t\t<auteur>auteur ?</auteur>\n");
+        fprintf(fp, "\t\t<abstract>%s</abstract>\n", abstract.c_str());
+        fprintf(fp, "\t\t<biblio>%s</biblio>\n", output.c_str());
+    fprintf(fp, "\t</article>\n");
+    fprintf(fp, "</root>\n");
+    fclose(fp);
+}
+
 void pdf_to_tab(const string &folder) {
+    char * filename;
     string command = "find " + folder + " -name '*.pdf' > pdf_files.txt";
     system(command.c_str());
     ifstream file("pdf_files.txt");
@@ -78,14 +108,24 @@ void pdf_to_tab(const string &folder) {
     string output = "output" + folder + ".txt";
     ofstream output_file(output);
     while (getline(f, line)) {
+        fprintf(stdout, "Processing %s\n", line.c_str());
         string pdf_content = pdf_to_variable(line);
         read_line_by_line(pdf_content, title, abstract);
-        output_file << "FILE : " << replace_space_by_underscore(line) << "\n" << title << "\n" << abstract << "\n" << endl;
+        //output_file << "FILE : " << replace_space_by_underscore(line) << "\n" << title << "\n" << abstract << "\n" << endl;
+        filename = (char *)malloc(100 * sizeof(char));
+        filename = "";
+        strcat(filename, replace_space_by_underscore(line).c_str());
+        strcat(filename, ".xml");
+        create_xml_file(filename,line, title, abstract,output);
     }
     command = "rm pdf_files.txt";
     system(command.c_str());
     cout << "FIN ! Le nom du fichier output est : " << output << endl;
 }
+
+
+
+
 
 int main() {
     // ask for the folder name
@@ -93,5 +133,6 @@ int main() {
     cout << "Enter the folder name: ";
     cin >> folder;
     pdf_to_tab(folder);
+
     return 0;
 }

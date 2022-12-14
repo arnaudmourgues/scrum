@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<article>
+		<preamble>/compression_phrases_Prog-Linear-jair</preamble>
+		<titre>Journal of Artificial Intelligence Research 31 (2008) 399-429</titre>
+		<auteur>auteur ?</auteur>
+		<abstract>AbstractSentence compression holds promise for many applications ranging from summarizationto subtitle generation. Our work views sentence compression as an optimization problemand uses integer linear programming (ILP) to infer globally optimal compressions in thepresence of linguistically motivated constraints. We show how previous formulations ofsentence compression can be recast as ILPs and extend these models with novel globalconstraints. Experimental results on written and spoken texts demonstrate improvementsover state-of-the-art models.</abstract>
+		<biblio>outputCORPUS_TRAIN.txt</biblio>
+	</article>
+</root>

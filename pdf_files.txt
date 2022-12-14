@@ -1,0 +1,10 @@
+CORPUS_TRAIN/Boudin-Torres-2006.pdf
+CORPUS_TRAIN/marcu_statistics_sentence_pass_one.pdf
+CORPUS_TRAIN/compression_phrases_Prog-Linear-jair.pdf
+CORPUS_TRAIN/mikheev.pdf
+CORPUS_TRAIN/ACL2004-HEADLINE.pdf
+CORPUS_TRAIN/hybrid_approach.pdf
+CORPUS_TRAIN/Torres.pdf
+CORPUS_TRAIN/compression.pdf
+CORPUS_TRAIN/Stolcke_1996_Automatic_linguistic.pdf
+CORPUS_TRAIN/probabilistic_sentence_reduction.pdf

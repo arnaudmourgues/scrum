@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<article>
+		<preamble>/Boudin-Torres-2006</preamble>
+		<titre>A Scalable MMR Approach to Sentence Scoringfor Multi-Document Update SummarizationFlorian Boudin \ and Marc El-Bèze \</titre>
+		<auteur>auteur ?</auteur>
+		<abstract>\Laboratoire Informatique d’Avignon339 chemin des Meinajaries, BP1228,84911 Avignon Cedex 9, France.</abstract>
+		<biblio>outputCORPUS_TRAIN.txt</biblio>
+	</article>
+</root>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<article>
+		<preamble>/marcu_statistics_sentence_pass_one</preamble>
+		<titre>From: AAAI-00 Proceedings. Copyright © 2000, AAAI (www.aaai.org). All rights reserved.</titre>
+		<auteur>auteur ?</auteur>
+		<abstract>AbstractWhen humans produce summaries of documents, theydo not simply extract sentences and concatenate them.Rather, they create new sentences that are grammatical, that cohere with one another, and that capture themost salient pieces of information in the original document. Given that large collections of text/abstractpairs are available online, it is now possible to envisionalgorithms that are trained to mimic this process. Inthis paper, we focus on sentence compression, a simpler version of this larger challenge. We aim to achievetwo goals simultaneously: our compressions should begrammatical, and they should retain the most important pieces of information. These two goals can conﬂict. We devise both noisy-channel and decision-treeapproaches to the problem, and we evaluate resultsagainst manual compressions and a simple baseline.</abstract>
+		<biblio>outputCORPUS_TRAIN.txt</biblio>
+	</article>
+</root>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<article>
+		<preamble>/probabilistic_sentence_reduction</preamble>
+		<titre>Probabilistic Sentence Reduction Using Support Vector MachinesMinh Le Nguyen, Akira Shimazu, Susumu HoriguchiBao Tu Ho and Masaru Fukushi</titre>
+		<auteur>auteur ?</auteur>
+		<abstract>Japan Advanced Institute of Science and Technology1-8, Tatsunokuchi, Ishikawa, 923-1211, JAPAN{nguyenml, shimazu, hori, bao, mfukushi}@jaist.ac.jp</abstract>
+		<biblio>outputCORPUS_TRAIN.txt</biblio>
+	</article>
+</root>
