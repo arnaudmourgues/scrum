@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.16.3)
 project (Genie_Logiciel)
 
 set(CMAKE_CXX_STANDARD 17)
