@@ -62,7 +62,7 @@ void read_line_by_line(const string &str, string &title, string &abstract) {
                 }
             }
         }
-        cout << line << endl;
+        //cout << line << endl;
         if (break_condition) {
             break;
         }
@@ -109,10 +109,11 @@ void pdf_to_tab(const string &folder) {
         output = output + "outputs/" + name + ".txt";
         ofstream output_file(output);
         output_file << "FILE : " << replace_space_by_underscore(line) << "\n" << title << "\n" << abstract << "\n" << endl;
+        cout << "Success " << line << endl;
     }
     command = "rm pdf_files.txt";
     system(command.c_str());
-    cout << "FIN ! Le nom du fichier output est : "  << endl;
+    cout << "FIN ! Un dossier \"output\" a été créé dans le dossier spécifié."  << endl;
 }
 
 int main() {
