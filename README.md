@@ -31,10 +31,13 @@ Sprint Backlog:
 
 -> and find the abstract
 
--Function that put those informations in an output file
+-Function that creates an output folder, with an output file for each pdf in the folder
+
+-Function that creates either xml outputs files if the tag "-x" is detected or a plain text if their is the tag "-t"
+
 
 ## USER STORY : 
-**_As a researcher, I want to get the abstract of colleagues in a plain text file_**
+**_As a researcher, I want to get the data of pdf files into xml files**
 
 *Priority : >>*
 
