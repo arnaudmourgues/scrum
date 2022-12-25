@@ -17,6 +17,8 @@ Sprint meetings :
 
 11/12
 
+25/12
+
 Language : `C/C++`
 
 Sprint Backlog:
@@ -31,9 +33,22 @@ Sprint Backlog:
 
 -> and find the abstract
 
+-> and find the discussion
+
+-> and find the conclusion
+
+-> and find the introduction
+
+-> and find the author
+
+-> and find the preamble
+
+-> and find the biblio
+
 -Function that creates an output folder, with an output file for each pdf in the folder
 
 -Function that creates either xml outputs files if the tag "-x" is detected or a plain text if their is the tag "-t"
+
 
 
 ## USER STORY : 
