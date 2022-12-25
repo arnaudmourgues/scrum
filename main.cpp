@@ -24,7 +24,8 @@ string pdf_to_variable(const string &folder, const string &variable_name) {
     return content;
 }
 
-void read_line_by_line(const string &str, string &title, string &abstract, string &author, string &biblio,string &introduction, string &conclusion, string &discussion) {
+void read_line_by_line(const string &str, string &title, string &abstract, string &author, string &biblio,
+                       string &introduction, string &conclusion, string &discussion) {
     string line;
 
     title = "";
@@ -40,7 +41,6 @@ void read_line_by_line(const string &str, string &title, string &abstract, strin
     istringstream f(str);
 
     bool title_found = false;
-    bool break_condition = false;
     bool authorCondition = false;
 
     while (getline(f, line)) { // read the line one by one
@@ -72,70 +72,59 @@ void read_line_by_line(const string &str, string &title, string &abstract, strin
         //on récupère ce qu'il y a entre "abstract" et "introduction"
         if (line.find("abstract") != string::npos || line.find("Abstract") != string::npos ||
             line.find("ABSTRACT") != string::npos) {
-            while (!break_condition) {
+            discussion += line;
+            getline(f, line);
+            while (!line.empty()) {
                 abstract += line;
-                if (line.empty() || line.find("1.") != string::npos || line.find("Introduction") != string::npos ||
-                    line.find("INTRODUCTION") != string::npos || line.find("Introduction") != string::npos ||
-                    line.find("introduction") != string::npos) {
-                    break_condition = true;
-                } else {
-                    getline(f, line);
-                }
+                getline(f, line);
             }
         }
 
-    //on récupère ce qu'il y a entre "introduction" et le paragraphe 2
-        if (line.empty() || line.find("1.") != string::npos || line.find("Introduction") != string::npos ||
+        //on récupère ce qu'il y a entre "introduction" et le paragraphe 2
+        if (line.find("Introduction") != string::npos ||
             line.find("INTRODUCTION") != string::npos || line.find("Introduction") != string::npos ||
             line.find("introduction") != string::npos) {
-            break_condition = false;
-            while (!break_condition) {
+            discussion += line;
+            getline(f, line);
+            while (!line.empty() || !line.find('\r')) {
                 introduction += line;
-                if (line.empty() || line.find("2.") != string::npos || line.find("2") != string::npos ||
-                    line.find("Previous") != string::npos || line.find("Work") != string::npos ||
-                    line.find("Method") != string::npos) {
-                    break_condition = true;
-                } else {
-                    getline(f, line);
-                }
+                getline(f, line);
             }
         }
 
-        //ajouter condition d'arret
-        /*if (line.empty() || line.find("Conclusion") != string::npos || line.find("Conclusions") != string::npos) {
-            break_condition = false;
-            while (!break_condition) {
+        if (line.find("Conclusion") != string::npos || line.find("Conclusions") != string::npos
+            || line.find("CONCLUSION") != string::npos || line.find("CONCLUSIONS") != string::npos) {
+            discussion += line;
+            getline(f, line);
+            while (!line.empty()) {
                 conclusion += line;
-                if (line.find("Acknowledgements") != string::npos || line.find("Acknowledgments") != string::npos) {
-                    break_condition = true;
-                } else {
-                    getline(f, line);
-                }
+                getline(f, line);
             }
         }
-         */
+
 
         //ajouter condition d'arret
-        if (line.empty() || line.find("Discussion") != string::npos || line.find("Discussions") != string::npos) {
-            break_condition = false;
-            while (!break_condition) {
+        if (line.find("Discussion") != string::npos || line.find("Discussions") != string::npos ||
+            line.find("DISCUSSION") != string::npos || line.find("DISCUSSIONS") != string::npos) {
+            discussion += line; //on ajoute la ligne discussion
+            getline(f, line); //on passe à la ligne suivante
+            while (!line.empty()) {
                 discussion += line;
-                if (line.empty()) {
-                    break_condition = true;
-                } else {
-                    getline(f, line);
-                }
+                getline(f, line);
             }
         }
 
         if (line.find("References") != string::npos || line.find("REFERENCES") != string::npos ||
             line.find("references") != string::npos) {
-            break_condition = false;
-            while (getline(f, line)) {
+            discussion += line;
+            getline(f, line);
+            while (!line.empty()) {
                 biblio += line;
+                getline(f, line);
             }
         }
     }
+
 }
 
 int dirExists(const char *path) { //RETURN 0 if dir doesn't exists, else return 1
@@ -155,10 +144,10 @@ void pdf_to_tab(string &folder) {
         //delete -x from the folder name and the character just before
         folder.erase(folder.find("-x") - 1, 3);
         toXML = true;
-    }else if(folder.find("-t") != string::npos){ //if -t is in the folder name, then we want to convert to tab
+    } else if (folder.find("-t") != string::npos) { //if -t is in the folder name, then we want to convert to tab
         //delete -t from the folder name
         folder.erase(folder.find("-t") - 1, 3);
-    }else{
+    } else {
         cout << "Please specify the output format: -x for XML, -t for plain text" << endl;
         return;
     }
@@ -193,9 +182,10 @@ void pdf_to_tab(string &folder) {
 
             string pdf_content = pdf_to_variable(output, name); // convert the pdf to a string
 
-            read_line_by_line(pdf_content, title, abstract, author, biblio, introduction, conclusion, discussion); // read the string line by line
+            read_line_by_line(pdf_content, title, abstract, author, biblio, introduction, conclusion,
+                              discussion); // read the string line by line
 
-            output += + "outputs/" + name + ".xml"; // create the output file
+            output += +"outputs/" + name + ".xml"; // create the output file
             ofstream output_file(output); // open the output file
 
             // write the xml
@@ -224,9 +214,9 @@ void pdf_to_tab(string &folder) {
             string output = "./" + folder + "/";
 
             string pdf_content = pdf_to_variable(output, name);
-            read_line_by_line(pdf_content, title, abstract, author, biblio,introduction, conclusion, discussion);
+            read_line_by_line(pdf_content, title, abstract, author, biblio, introduction, conclusion, discussion);
 
-            output += + "outputs/" + name + ".txt";
+            output += +"outputs/" + name + ".txt";
 
             ofstream output_file(output);
             output_file << "FILE : " << replace_space_by_underscore(line) << "\n" << title << "\n" << abstract << "\n"
