@@ -1,4 +1,0 @@
-FILE : hybrid_approach.pdf
-Sentence Compression for Automated Subtitling: A Hybrid ApproachVincent Vandeghinste and Yi PanCentre for Computational Linguistics
-AbstractIn this paper a sentence compression tool is described. We describe how an input sentence getsanalysed by using a.o. a tagger, a shallow parserand a subordinate clause detector, and how, basedon this analysis, several compressed versions of thissentence are generated, each with an associated estimated probability. These probabilities were estimated from a parallel transcript/subtitle corpus. Toavoid ungrammatical sentences, the tool also makesuse of a number of rules. The evaluation was doneon three different pronunciation speeds, averagingsentence reduction rates of 40% to 17%. The number of reasonable reductions ranges between 32.9%and 51%, depending on the average estimated pronunciation speed.
-

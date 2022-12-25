@@ -1,4 +1,0 @@
-FILE : Boudin-Torres-2006.pdf
-A Scalable MMR Approach to Sentence Scoringfor Multi-Document Update SummarizationFlorian Boudin \ and Marc El-Bèze \
-
-

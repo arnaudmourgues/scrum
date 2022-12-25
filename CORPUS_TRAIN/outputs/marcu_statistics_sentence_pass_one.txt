@@ -1,4 +1,0 @@
-FILE : marcu_statistics_sentence_pass_one.pdf
-From: AAAI-00 Proceedings. Copyright © 2000, AAAI (www.aaai.org). All rights reserved.
-
-

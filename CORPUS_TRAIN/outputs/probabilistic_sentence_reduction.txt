@@ -1,4 +1,0 @@
-FILE : probabilistic_sentence_reduction.pdf
-Probabilistic Sentence Reduction Using Support Vector MachinesMinh Le Nguyen, Akira Shimazu, Susumu HoriguchiBao Tu Ho and Masaru Fukushi
-
-
