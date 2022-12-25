@@ -101,18 +101,21 @@ void read_line_by_line(const string &str, string &title, string &abstract, strin
             }
         }
 
-        if (line.empty() || line.find("Conclusion") != string::npos || line.find("Conclusions") != string::npos) {
+        //ajouter condition d'arret
+        /*if (line.empty() || line.find("Conclusion") != string::npos || line.find("Conclusions") != string::npos) {
             break_condition = false;
             while (!break_condition) {
                 conclusion += line;
-                if (line.empty() || line.find("Acknowledgements") != string::npos || line.find("Acknowledgments") != string::npos) {
+                if (line.find("Acknowledgements") != string::npos || line.find("Acknowledgments") != string::npos) {
                     break_condition = true;
                 } else {
                     getline(f, line);
                 }
             }
         }
+         */
 
+        //ajouter condition d'arret
         if (line.empty() || line.find("Discussion") != string::npos || line.find("Discussions") != string::npos) {
             break_condition = false;
             while (!break_condition) {
